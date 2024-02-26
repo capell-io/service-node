@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE_VERSION=v0.0.1
-PACKAGE_MD5=0828cd15995520112b2d9afa77baf19a
+PACKAGE_MD5=50e4711fddbc3aa453c568d8b386b86c
 
 quitWithError() {
     echo -e "\033[31m$1\033[0m"
@@ -106,6 +106,7 @@ fi
 
 echo "[Unit]
 Description=Capell node
+After=libvirtd.service
 
 [Service]
 Type=simple
