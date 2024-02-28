@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PACKAGE_VERSION=v0.0.1
-PACKAGE_MD5=50e4711fddbc3aa453c568d8b386b86c
+PACKAGE_VERSION=v0.0.2
+PACKAGE_MD5=fad07b6a223d5241d909fc31c41293b4
 
 quitWithError() {
     echo -e "\033[31m$1\033[0m"
