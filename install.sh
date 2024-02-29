@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE_VERSION=v0.0.2
-PACKAGE_MD5=fad07b6a223d5241d909fc31c41293b4
+PACKAGE_MD5=f4f5823fff636fcb302acebe5ca6ca05
 
 quitWithError() {
     echo -e "\033[31m$1\033[0m"
@@ -27,7 +27,7 @@ if [ $VMFLAG -eq 0 ]; then
 fi
 
 TARGET_DIR=./service-node
-if [ -d "$TARGET_DIR" ]; then
+if [ -d "$TARGET_DIR/keyring-test" ]; then
     quitWithError "directory already exists: $TARGET_DIR"
 fi
 
@@ -41,11 +41,11 @@ source /etc/os-release
 case $ID in
     debian|ubuntu)
         #apt update
-        apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+        apt install -y unzip qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
         ;;
     centos|fedora|rhel)
         #yum update
-        yum install -y qemu-kvm libvirt bridge-utils
+        yum install -y unzip qemu-kvm libvirt bridge-utils
         ;;
     *)
         quitWithError "$ID is not supported"
@@ -63,7 +63,7 @@ systemctl enable libvirtd
 systemctl start libvirtd
 
 
-WORKER_PACKAGE_NAME=service_node_$PACKAGE_VERSION.tar.gz
+WORKER_PACKAGE_NAME=service_node_$PACKAGE_VERSION.zip
 WORKER_PACKAGE_PATH=/tmp/$WORKER_PACKAGE_NAME
 
 downloadPackage() {
@@ -93,7 +93,7 @@ fi
 echo "install ..."
 
 mkdir "$TARGET_DIR"
-tar -C "$TARGET_DIR" -xzf $WORKER_PACKAGE_PATH
+unzip -o -d "$TARGET_DIR" $WORKER_PACKAGE_PATH
 
 cd "$TARGET_DIR"
 ./service-node init --bind $BIND
