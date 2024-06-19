@@ -3,7 +3,7 @@
 OS=`uname`
 ARCH=`uname -m`
 
-PACKAGE_VERSION=v0.0.1
+PACKAGE_VERSION=v0.0.2
 PACKAGE_MD5=b6721c4a5b84184b84bef9ee555d82a7
 
 CAPELL_PACKAGE_NAME=capell_edge_server_linux_x86_64_${PACKAGE_VERSION}.zip
