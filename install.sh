@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 OS=`uname | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m`
 
@@ -16,11 +17,13 @@ function quitWithError() {
 if [ x"$OS" != x"linux" ] && [ x"$OS" != x"darwin" ]; then
     quitWithError "system not supported"
 fi
-if [ x"$ARCH" != x"x86_64" ] && [ x"$OS" == x"linux" ]; then
-    quitWithError "only supports x86_64"
-fi
-if [ x"$UID" != x"0" ]; then
-   quitWithError "must run as root"
+if [ x"$OS" == x"linux" ]; then
+    if [ x"$ARCH" != x"x86_64" ]; then
+        quitWithError "only supports x86_64"
+    fi
+    if [ x"$UID" != x"0" ]; then
+        quitWithError "must run as root"
+    fi
 fi
 if [ x"$BIND" == x"" ]; then
     quitWithError "missing BIND environment variable"
