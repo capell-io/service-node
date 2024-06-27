@@ -66,18 +66,18 @@ if [ x"$OS" == x"Linux" ]; then
     fi
 
     echo "[Unit]
-    Description=Capell edge node
-    After=libvirtd.service docker.service
+Description=Capell edge node
+After=libvirtd.service docker.service
 
-    [Service]
-    Type=simple
-    User=root
-    Group=root
-    ExecStart=`pwd`/capell-edge-server --bind $BIND
-    Restart=on-failure
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=`pwd`/capell-edge-server --bind $BIND
+Restart=on-failure
 
-    [Install]
-    WantedBy=multi-user.target" > $SERVICE_CONF
+[Install]
+WantedBy=multi-user.target" > $SERVICE_CONF
 
     systemctl enable capell.service
     systemctl restart capell.service
