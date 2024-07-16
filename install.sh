@@ -36,7 +36,7 @@ fi
 echo "download package: $CAPELL_PACKAGE_NAME"
 curl -#L -o $CAPELL_PACKAGE_PATH "https://github.com/capell-io/service-node/releases/download/$PACKAGE_VERSION/$CAPELL_PACKAGE_NAME"
 
-if [ x"$OS" == x"Linux" ]; then
+if [ x"$OS" == x"linux" ]; then
     if ! unzip -v > /dev/null 2>&1; then
         source /etc/os-release
         case $ID in
@@ -58,7 +58,7 @@ fi
 echo "install ..."
 unzip -o $CAPELL_PACKAGE_PATH
 
-if [ x"$OS" == x"Linux" ]; then
+if [ x"$OS" == x"linux" ]; then
     SERVICE_CONF=/usr/lib/systemd/system/capell.service
 
     if [ -f $SERVICE_CONF ]; then
