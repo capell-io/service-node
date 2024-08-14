@@ -41,11 +41,11 @@ if [ x"$OS" == x"linux" ]; then
         source /etc/os-release
         case $ID in
             debian|ubuntu)
-                apt update
+                apt -y update
                 apt install -y unzip
                 ;;
             centos|fedora|rhel)
-                yum update
+                yum -y update
                 yum install -y unzip
                 ;;
             *)
