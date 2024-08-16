@@ -4,7 +4,7 @@ set -e
 OS=`uname | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m`
 
-PACKAGE_VERSION=v0.0.3
+PACKAGE_VERSION=v0.0.4
 CAPELL_PACKAGE_NAME=capell_edge_server_${OS}_${ARCH}_${PACKAGE_VERSION}.zip
 CAPELL_PACKAGE_PATH=/tmp/$CAPELL_PACKAGE_NAME
 
