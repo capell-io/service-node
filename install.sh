@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PATH="/usr/bin:$PATH"
 set -e
 OS=`uname | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m`
