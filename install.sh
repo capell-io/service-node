@@ -74,6 +74,7 @@ After=libvirtd.service docker.service
 Type=simple
 User=root
 Group=root
+Environment=EDGE_DIRECT_JOIN_ORDER=1
 ExecStart=`pwd`/capell-edge-server --bind $BIND
 Restart=on-failure
 
@@ -96,7 +97,7 @@ else
             fi
         done
     fi
-    ./capell-edge-server --bind $BIND -d
+    EDGE_DIRECT_JOIN_ORDER=1 ./capell-edge-server --bind $BIND -d
 fi
 
 echo -e "\033[32minstallation is completed\033[0m"
