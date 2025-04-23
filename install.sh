@@ -35,6 +35,7 @@ if [ -f $CAPELL_PACKAGE_PATH ]; then
 fi
 
 echo "download package: $CAPELL_PACKAGE_NAME"
+echo "https://github.com/capell-io/service-node/releases/download/$PACKAGE_VERSION/$CAPELL_PACKAGE_NAME"
 curl -#L -o $CAPELL_PACKAGE_PATH "https://github.com/capell-io/service-node/releases/download/$PACKAGE_VERSION/$CAPELL_PACKAGE_NAME"
 
 if [ x"$OS" == x"linux" ]; then
