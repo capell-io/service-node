@@ -19,8 +19,8 @@ if [ x"$OS" != x"linux" ] && [ x"$OS" != x"darwin" ]; then
     quitWithError "system not supported"
 fi
 if [ x"$OS" == x"linux" ]; then
-    if [ x"$ARCH" != x"x86_64" ]; then
-        quitWithError "only supports x86_64"
+    if [ x"$ARCH" != x"x86_64" ] && [ x"$ARCH" != x"aarch64" ]; then
+        quitWithError "only supports x86_64 and aarch64"
     fi
     if [ x"$UID" != x"0" ]; then
         quitWithError "must run as root"
