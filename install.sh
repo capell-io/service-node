@@ -5,7 +5,7 @@ set -e
 OS=`uname | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m`
 
-PACKAGE_VERSION=v0.0.14
+PACKAGE_VERSION=v0.0.15
 CAPELL_PACKAGE_NAME=capell_edge_server_${OS}_${ARCH}_${PACKAGE_VERSION}.zip
 CAPELL_PACKAGE_PATH=/tmp/$CAPELL_PACKAGE_NAME
 
@@ -76,6 +76,7 @@ Type=simple
 User=root
 Group=root
 Environment=EDGE_DIRECT_JOIN_ORDER=1
+Environment=CAPELL_MODE=dev
 ExecStart=`pwd`/capell-edge-server --bind $BIND
 Restart=on-failure
 
@@ -98,7 +99,7 @@ else
             fi
         done
     fi
-    EDGE_DIRECT_JOIN_ORDER=1 ./capell-edge-server --bind $BIND -d
+    CAPELL_MODE=dev EDGE_DIRECT_JOIN_ORDER=1 ./capell-edge-server --bind $BIND -d
 fi
 
 echo -e "\033[32minstallation is completed\033[0m"
