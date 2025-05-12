@@ -78,7 +78,10 @@ Group=root
 Environment=EDGE_DIRECT_JOIN_ORDER=1
 Environment=CAPELL_MODE=dev
 ExecStart=`pwd`/capell-edge-server --bind $BIND
-Restart=on-failure
+Restart=always
+RestartSec=5
+StartLimitBurst=0
+StartLimitIntervalSec=0
 
 [Install]
 WantedBy=multi-user.target" > $SERVICE_CONF
