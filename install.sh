@@ -82,6 +82,7 @@ Restart=always
 RestartSec=5
 StartLimitBurst=0
 StartLimitIntervalSec=0
+LimitCORE=0
 
 [Install]
 WantedBy=multi-user.target" > $SERVICE_CONF
